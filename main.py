@@ -1,5 +1,6 @@
 # Naive Bayesian Classification
-
+# Code written by: XXXX
+# Last updated: February 26th, 2023 by Nathalia Esper (nathalia.esper@childmind.org)
 
 
 # Sets up the data input into lists and runs program
