@@ -1,3 +1,4 @@
+from typing import Dict
 # Naive Bayesian Classification
 
 
@@ -6,8 +7,15 @@
 def main():
 
     file1 = open("pdf.txt", 'r')
-    bird_array = dict()
-    plane_array = dict()
+    try:
+        if file1.read() == '':
+            raise Exception("File is empty")
+        file1.seek(0)  # Reset file pointer to the beginning
+    except Exception as e:
+        print("Error:", e)
+        return
+    bird_array: Dict[float, float] = dict()
+    plane_array: Dict[float, float] = dict()
     i = 0
     j = 0
     lines = file1.readlines()
