@@ -5,15 +5,14 @@
 # Sets up the data input into lists and runs program
 def main():
 
-    file1 = open("pdf.txt", 'r')
+    my_file = open("pdf.txt", 'r')
     bird_array = dict()
     plane_array = dict()
-    i = 0
-    j = 0
-    lines = file1.readlines()
-    line = lines[0]
-    line = line.strip('\n')
-    x = line.split(',')
+    
+    file_lines = my_file.readlines()
+    first_line = file_lines[0]
+    first_line = first_line.strip('\n')
+    first_line = first_line.split(',')
 
     # Creates dictionary of probabilities where each index is a velocity
     # increasing by 0.5 from 0 -> 200 and at each index there is the
