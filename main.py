@@ -1,43 +1,41 @@
 # Naive Bayesian Classification
-
-
-# test PR
 # Sets up the data input into lists and runs program
+
+
 def main():
-    file1 = open("pdf.txt", "r")
+    prob_values = open("pdf.txt", "r")
     bird_array = dict()
     plane_array = dict()
-    i = 0
-    j = 0
-    lines = file1.readlines()
-    line = lines[0]
-    line = line.strip("\n")
-    x = line.split(",")
+
+    lines = prob_values.readlines()
+    line = lines[0].strip("\n")
+
+    init_prob = line.split(",")
 
     # Creates dictionary of probabilities where each index is a velocity
     # increasing by 0.5 from 0 -> 200 and at each index there is the
     # likelihood of the bird or plane traveling at that speed
-    j = 0
-    for i in range(0, 400):
-        bird_array[j] = float(x[i])
-        j += 0.5
+    bird_idx = 0
+    for idx in range(0, 400):
+        bird_array[bird_idx] = float(init_prob[idx])
+        bird_idx += 0.5
+
     line = lines[1]
     line = line.strip("\n")
     x = line.split(",")
-    i = 0
+    plane_idx = 0
     for j in range(0, 400):
-        plane_array[i] = float(x[j])
-        i += 0.5
+        plane_array[plane_idx] = float(x[j])
+        plane_idx += 0.5
 
     # Creates a nested list of all of the observation data
-    file2 = open("data.txt", "r")
+    obs_data = open("data.txt", "r")
     data_array = []
     i = 0
-    empty_list = []
     while i < 10:
         data_array.append([])
         i += 1
-    lines = file2.readlines()
+    lines = obs_data.readlines()
     y = 0
     for line in lines:
         line = line.strip("\n")
@@ -52,8 +50,8 @@ def main():
     # Runs program
     result = run(bird_array, plane_array, data_array)
     pretty_print(result)
-    file2.close()
-    file1.close()
+    obs_data.close()
+    prob_values.close()
 
 
 # Helper function to print out the result
