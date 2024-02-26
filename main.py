@@ -106,7 +106,6 @@ def run(bird_array, plane_array, data_array):
             for i in range(0, len(b_plane[q])):
                 if b_plane[q][i] != 0:
                     b_plane[q][i] = b_plane[q][i] / total_sum
-            bird_sum = sum(b_bird[q])
             for j in range(0, len(b_bird[q])):
                 if b_bird[q][i] != 0:
                     b_bird[q][j] = b_bird[q][j] / total_sum
