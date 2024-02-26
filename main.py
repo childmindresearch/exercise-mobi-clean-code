@@ -1,19 +1,24 @@
-# Naive Bayesian Classification
+# Naive Bayesisn Classification
 
 
+def read_data(filename):
+    """Reads data from the txt file
+
+    Args:
+        filename (path like): full pathname of the file
+
+    Returns:
+        list: list of strings
+    """
+    with open(filename, 'r') as file:
+        data = file.read().strip('\n').split(',')
+    return data
 
 # Sets up the data input into lists and runs program
 def main():
-
-    file1 = open("pdf.txt", 'r')
-    bird_array = dict()
-    plane_array = dict()
-    i = 0
+    bird_array, plane_array = dict(), dict()
     j = 0
-    lines = file1.readlines()
-    line = lines[0]
-    line = line.strip('\n')
-    x = line.split(',')
+    x = read_data("pdf.txt")
 
     # Creates dictionary of probabilities where each index is a velocity
     # increasing by 0.5 from 0 -> 200 and at each index there is the
@@ -54,7 +59,6 @@ def main():
     result = run (bird_array, plane_array, data_array)
     pretty_print(result)
     file2.close()
-    file1.close()
 
 # Helper function to print out the result
 def pretty_print (result):
