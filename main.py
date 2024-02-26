@@ -1,5 +1,5 @@
 # Naive Bayesian Classification
-# Code writte by: XXXX
+# Code written by: XXXX
 # Last updated: February 26th, 2023 by Nathalia Esper (nathalia.esper@childmind.org)
 
 
