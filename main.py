@@ -59,7 +59,7 @@ def main():
 # Helper function to print out the result
 def pretty_print (result):
     for i in range(0,10):
-        print("[", i + 1, "]: ", result[i])
+        print("[", i + 1, "]: ", result[i]) #hey
 
 # The main implementation of the naive Bayesian algorithm             
 def run (bird_array, plane_array, data_array):
