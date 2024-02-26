@@ -1,12 +1,12 @@
 # Naive Bayesian Classification
-# Code written by: XXXX
+# Code writte by: XXXX
 # Last updated: February 26th, 2023 by Nathalia Esper (nathalia.esper@childmind.org)
 
 
 # Sets up the data input into lists and runs program
 def main():
 
-    file1 = open("pdf.txt", "r")
+    file1 = open("pdf.txt", 'r')
     bird_array = dict()
     plane_array = dict()
     i = 0
@@ -20,19 +20,19 @@ def main():
     # increasing by 0.5 from 0 -> 200 and at each index there is the
     # likelihood of the bird or plane traveling at that speed
     j = 0
-    for i in range(0, 400):
+    for i in range (0, 400):
         bird_array[j] = float(x[i])
         j += 0.5
     line = lines[1]
-    line = line.strip("\n")
-    x = line.split(",")
+    line = line.strip('\n')
+    x = line.split(',')
     i = 0
-    for j in range(0, 400):
+    for j in range (0, 400):
         plane_array[i] = float(x[j])
         i += 0.5
 
     # Creates a nested list of all of the observation data
-    file2 = open("data.txt", "r")
+    file2 = open("data.txt", 'r')
     data_array = []
     i = 0
     empty_list = []
@@ -42,10 +42,10 @@ def main():
     lines = file2.readlines()
     y = 0
     for line in lines:
-        line = line.strip("\n")
-        x = line.split(",")
+        line = line.strip('\n')
+        x = line.split(',')
         for k in range (0, 300):
-            if x[k] != "NaN":
+            if x[k] != 'NaN':
                 new = float(x[k])
                 new = round(new * 2) / 2
                 data_array[y].append(new)
