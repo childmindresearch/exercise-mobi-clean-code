@@ -5,12 +5,12 @@
 # Sets up the data input into lists and runs program
 def main():
 
-    file1 = open("pdf.txt", 'r')
-    bird_array = dict()
-    plane_array = dict()
+    pdf = open("pdf.txt", 'r')
+    bird_probabilities = dict()
+    plane_probabilities = dict()
     i = 0
     j = 0
-    lines = file1.readlines()
+    lines = pdf.readlines()
     line = lines[0]
     line = line.strip('\n')
     x = line.split(',')
@@ -20,25 +20,25 @@ def main():
     # likelihood of the bird or plane traveling at that speed
     j = 0
     for i in range (0, 400):
-        bird_array[j] = float(x[i])
+        bird_probabilities[j] = float(x[i])
         j += 0.5
     line = lines[1]
     line = line.strip('\n')
     x = line.split(',')
     i = 0
     for j in range (0, 400):
-        plane_array[i] = float(x[j])
+        plane_probabilities[i] = float(x[j])
         i += 0.5
 
     # Creates a nested list of all of the observation data
-    file2 = open("data.txt", 'r')
-    data_array = []
+    data = open("data.txt", 'r')
+    observation_data = []
     i = 0
     empty_list = []
     while i < 10:
-        data_array.append([])
+        observation_data.append([])
         i += 1
-    lines = file2.readlines()
+    lines = data.readlines()
     y = 0
     for line in lines:
         line = line.strip('\n')
@@ -47,19 +47,15 @@ def main():
             if x[k] != 'NaN':
                 new = float(x[k])
                 new = round(new * 2) / 2
-                data_array[y].append(new)
+                observation_data[y].append(new)
         y += 1
 
     # Runs program
-    result = run (bird_array, plane_array, data_array)
-    pretty_print(result)
-    file2.close()
-    file1.close()
+    result = run (bird_probabilities, plane_probabilities, observation_data)
+    # pretty_print(result)
+    data.close()
+    pdf.close()
 
-# Helper function to print out the result
-def pretty_print (result):
-    for i in range(0,10):
-        print("[", i + 1, "]: ", result[i])
 
 # The main implementation of the naive Bayesian algorithm             
 def run (bird_array, plane_array, data_array):
@@ -123,5 +119,9 @@ def run (bird_array, plane_array, data_array):
             classification.append("Bird = " + str(bird_num))
         else:
             classification.append("Could not be determined. ")
-    
+
+    # to print out "pretty print"
+    for i in range(0,10):
+        print("[", i + 1, "]: ", classification[i])
+        
     return classification
